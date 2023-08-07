@@ -1,0 +1,30 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px;
+    max-height: 350px;
+    border: 1px solid rgba(61, 119, 97, 0.582);
+    border-radius: 5%;
+    width: 25%;
+    padding: 15px;
+    margin: 20px;
+}
+
+.card.currentDate {
+    border: 2px solid rgba(61, 119, 97, 0.582);
+    background-color: #d9efde
+}
+
+.cardDate {
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight:500;
+    color: rgb(61, 119, 97);
+}
+
+
+
+.card input {
+    width: 100%;
+}

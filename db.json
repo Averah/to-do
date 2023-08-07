@@ -1,0 +1,15 @@
+{
+
+    "todos":[
+        { "id": 1, "date": "05.08.2023", "todo": "todo", "isDone": true }, 
+        { "id": 2, "date2": "06.08.2023", "todo2": "todo2", "isDone": false }
+    ], 
+
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }
