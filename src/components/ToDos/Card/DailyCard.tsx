@@ -1,22 +1,59 @@
-import React from 'react'
-import { CustomInput } from '../../../UI/CustomInput/CustomInput';
+import React, { useCallback } from 'react'
 import s from './DailyCard.module.css';
 import cn from "classnames";
-import { useDate } from '../../../context/Date/Date';
+import { actions, useDate } from '../../../context/Date/Date';
+import { TaskInput } from '../TaskInput/TaskInput';
+import { ToDo, toDoAPI } from '../../../API/toDoAPI';
 
 type Props = {
-  date: Date
+  date: Date;
+  todos: ToDo[]
 }
 
-const DailyCard: React.FC<Props> = React.memo(({ date }) => {
+const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
+  
+  const { state, dispatch } = useDate()
 
-  const { state } = useDate()
   const stringCardDate = `${date.toLocaleDateString('en-US', { weekday: 'long' })}, ${date.toLocaleDateString()}`
+
+  const taskInputs: ToDo[] = Array(10).fill(undefined).map((_, idx) => {
+    if (todos && todos.length && todos[idx]) {
+      return todos[idx];
+    };
+    return {
+      isDone: false,
+      task: '',
+      date: '',
+    }
+  })
+
+  const submitTask = useCallback( async (value: string, id?: number) => {
+    if (id) {
+      await toDoAPI.editToDo(id, {
+        id: id,
+        task: value,
+        isDone: false,
+        date: date.toLocaleDateString()
+      })
+    } else {
+      await toDoAPI.addToDo({
+        id: Date.now(),
+        task: value,
+        isDone: false,
+        date: date.toLocaleDateString()
+      })
+
+    }
+
+    const response = await toDoAPI.getToDos()
+    dispatch(actions.setToDos(response))
+
+  }, [date, dispatch])
 
   return (
     <div className={cn(
       {
-        [s.currentDate]: date.getDate() === state.currentDate.getDate(),
+        [s.currentDate]: date.toLocaleDateString() === state.currentDate.toLocaleDateString(),
       },
       s.card
     )}>
@@ -24,9 +61,9 @@ const DailyCard: React.FC<Props> = React.memo(({ date }) => {
         {stringCardDate}
       </div>
       <div className={s.todosList}>
-        {(Array(10).fill(true).map((_, i) =>
-          <CustomInput key={i} />)) 
-        }
+        {taskInputs.map((todo, idx) =>
+          <TaskInput key={idx} initialValue={todo.task} submitTask={submitTask} id={todo.id}/>)}
+
       </div>
     </div>
   );
@@ -35,9 +72,6 @@ const DailyCard: React.FC<Props> = React.memo(({ date }) => {
 
 export default DailyCard;
 
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   console.log(event.target.value);
-  // }
 
   // const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>,) => {
 
@@ -45,3 +79,8 @@ export default DailyCard;
       
   //   }
   // };
+
+
+  
+
+  // console.log(values);

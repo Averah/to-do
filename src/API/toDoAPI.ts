@@ -1,25 +1,31 @@
 import { axiosInstance } from "./axiosInstance";
 
 
-export type toDo = {
-    id: number,
-    date: string,
+export type ToDo = {
+    id?: number,
     task: string,
-    isDone: boolean
-
+    isDone: boolean,
+    date: string
 }
-export type ToDos = toDo[]
 
-export const toDoApi = {
+export const toDoAPI = {
     async getToDos () {
         const response = await axiosInstance
-        .get(`todos/`)
+        .get(`todos2`)       
         return response.data
+
+        
     },
 
-    async addToDo (toDo: toDo) {
+    async addToDo (toDo: ToDo) {
         const response = await axiosInstance
-        .post<toDo>(`todos/${toDo.id}`)
-        return response.data
+        .post<ToDo>(`todos2/`, toDo)
+        return response.status
+    },
+
+    async editToDo (id: number, toDo: ToDo) {
+        const response = await axiosInstance
+        .put<ToDo>(`todos2/${id}`, toDo)
+        return response.status
     }
 }

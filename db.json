@@ -1,15 +1,40 @@
 {
-
-    "todos":[
-        { "id": 1, "date": "05.08.2023", "todo": "todo", "isDone": true }, 
-        { "id": 2, "date2": "06.08.2023", "todo2": "todo2", "isDone": false }
-    ], 
-
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "todos2": [
+    {
+      "id": 5,
+      "task": "to",
+      "isDone": false,
+      "date": "16.08.2023"
+    },
+    {
+      "id": 6,
+      "task": "todo66758796",
+      "isDone": false,
+      "date": "17.08.2023"
+    },
+    {
+      "id": 1692286896514,
+      "task": "870707",
+      "isDone": false,
+      "date": "26.08.2023"
+    },
+    {
+      "id": 1692286902874,
+      "task": "695967",
+      "isDone": false,
+      "date": "29.08.2023"
+    },
+    {
+      "id": 1692286977650,
+      "task": "675457",
+      "isDone": false,
+      "date": "15.08.2023"
+    },
+    {
+      "id": 1692286979306,
+      "task": "56uy54u",
+      "isDone": false,
+      "date": "19.08.2023"
+    }
+  ]
+}

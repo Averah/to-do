@@ -7,8 +7,9 @@ type PropsType = React.InputHTMLAttributes<HTMLInputElement>
 
 export type Ref = HTMLInputElement;
 
-export const CustomInput = forwardRef<Ref, PropsType>(({className, ...otherProps}, ref) => {
-    return  <input ref={ref} {...otherProps} className={cn(s.customInput, className)}/>
+
+export const CustomInput = forwardRef<Ref, PropsType>(({ className, ...otherProps }, ref) => {
+    return <input ref={ref} {...otherProps} className={cn(s.customInput, className)} />
 })
 
 
