@@ -1,4 +1,4 @@
-.customInput{
+.customInput {
     font-family: 'SourceSansPro';
     font-size: 16px;
     padding: 2px;
@@ -11,4 +11,9 @@
   }
   .customInput:focus {
     border-bottom: 1px solid #3f884bc0;
+  }
+
+
+  .customInput .done {
+    color: red;
   }

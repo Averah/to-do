@@ -11,7 +11,7 @@ type Props = {
 }
 
 const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
-  
+
   const { state, dispatch } = useDate()
 
   const stringCardDate = `${date.toLocaleDateString('en-US', { weekday: 'long' })}, ${date.toLocaleDateString()}`
@@ -27,12 +27,12 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
     }
   })
 
-  const submitTask = useCallback( async (value: string, id?: number) => {
+  const submitTask = useCallback(async (value: string, isDone: boolean, id?: number, ) => {
     if (id) {
       await toDoAPI.editToDo(id, {
         id: id,
         task: value,
-        isDone: false,
+        isDone: isDone,
         date: date.toLocaleDateString()
       })
     } else {
@@ -42,13 +42,31 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
         isDone: false,
         date: date.toLocaleDateString()
       })
-
     }
 
     const response = await toDoAPI.getToDos()
     dispatch(actions.setToDos(response))
-
   }, [date, dispatch])
+
+  const deleteTask = useCallback(async (id: number) => {
+    await toDoAPI.deleteToDo(id)
+    const response = await toDoAPI.getToDos()
+    dispatch(actions.setToDos(response))
+  }, [dispatch])
+
+  const markToDoStatus = useCallback(async (id: number, isDone:boolean, value: string) => {
+    await toDoAPI.markToDo(id, {
+      id: id,
+      task: value,
+      isDone: isDone,
+      date: date.toLocaleDateString()
+
+    }
+      
+    )
+    const response = await toDoAPI.getToDos()
+    dispatch(actions.setToDos(response))
+  }, [dispatch, date])
 
   return (
     <div className={cn(
@@ -62,8 +80,8 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
       </div>
       <div className={s.todosList}>
         {taskInputs.map((todo, idx) =>
-          <TaskInput key={idx} initialValue={todo.task} submitTask={submitTask} id={todo.id}/>)}
-
+          <TaskInput key={idx} initialValue={todo.task} submitTask={submitTask}
+            id={todo.id} deleteTask={deleteTask} isDone={todo.isDone} markToDoStatus={markToDoStatus}/>)}
       </div>
     </div>
   );
@@ -71,16 +89,3 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
 )
 
 export default DailyCard;
-
-
-  // const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>,) => {
-
-  //   if (event.key === 'Enter') {
-      
-  //   }
-  // };
-
-
-  
-
-  // console.log(values);

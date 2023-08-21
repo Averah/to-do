@@ -2,7 +2,7 @@ import React from 'react'
 import { toDoAPI } from '../../../API/toDoAPI';
 import { useDate, actions } from '../../../context/Date/Date';
 import { Pagination } from '../../Pagination/Pagination';
-import DailyCard from '../Card/DailyCard';
+import DailyCard from '../DailyCard/DailyCard';
 import s from './CardsList.module.css';
 import { useEffectOnce } from '../../../Hooks/useEffectOnce';
 

@@ -27,5 +27,17 @@ export const toDoAPI = {
         const response = await axiosInstance
         .put<ToDo>(`todos2/${id}`, toDo)
         return response.status
-    }
+    },
+
+    async deleteToDo (id: number) {
+        const response = await axiosInstance
+        .delete<ToDo>(`todos2/${id}`)
+        return response.status
+    },
+
+    async markToDo (id: number, toDo: ToDo) {
+        const response = await axiosInstance
+        .put<ToDo>(`todos2/${id}`, toDo)
+        return response.status
+    },
 }

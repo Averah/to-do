@@ -1,0 +1,37 @@
+.taskInput {
+  padding-top: 1px;
+  display: flex;
+}
+
+.taskInput input {
+  flex-grow: 1;
+}
+
+.checkmark {
+  padding-left: 5px;
+  padding-top: 2px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(90, 148, 105)
+}
+
+.checkmark.done {
+  color: #b4b5b5
+}
+.checkmark:hover {
+  cursor: pointer;
+}
+
+.trashIcon {
+  max-height: 20px;
+  padding-left: 5px;
+}
+
+.trashIcon:hover {
+  cursor: pointer;
+}
+
+.inputDone {
+  text-decoration: line-through;
+  color: #b4b5b5
+}
