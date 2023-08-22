@@ -27,7 +27,7 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
     }
   })
 
-  const submitTask = useCallback(async (value: string, isDone: boolean, id?: number, ) => {
+  const submitTask = useCallback(async (value: string, isDone: boolean, id?: number,) => {
     if (id) {
       await toDoAPI.editToDo(id, {
         id: id,
@@ -54,7 +54,7 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
     dispatch(actions.setToDos(response))
   }, [dispatch])
 
-  const markToDoStatus = useCallback(async (id: number, isDone:boolean, value: string) => {
+  const markToDoStatus = useCallback(async (id: number, isDone: boolean, value: string) => {
     await toDoAPI.markToDo(id, {
       id: id,
       task: value,
@@ -62,7 +62,7 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
       date: date.toLocaleDateString()
 
     }
-      
+
     )
     const response = await toDoAPI.getToDos()
     dispatch(actions.setToDos(response))
@@ -81,7 +81,7 @@ const DailyCard: React.FC<Props> = React.memo(({ date, todos }) => {
       <div className={s.todosList}>
         {taskInputs.map((todo, idx) =>
           <TaskInput key={idx} initialValue={todo.task} submitTask={submitTask}
-            id={todo.id} deleteTask={deleteTask} isDone={todo.isDone} markToDoStatus={markToDoStatus}/>)}
+            id={todo.id} deleteTask={deleteTask} isDone={todo.isDone} markToDoStatus={markToDoStatus} />)}
       </div>
     </div>
   );

@@ -13,4 +13,8 @@
     padding-top: 50px;
 }
 
-
+@media screen and (max-width: 1000px) {
+    .pagination {
+        padding-top: 10px;
+    }
+}

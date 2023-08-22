@@ -56,7 +56,7 @@ export const TaskInput: React.FC<Props> = React.memo(({ initialValue, id, submit
       <div className={s.taskInput}>
         <CustomInput value={value} onChange={(e) => setValue(e.target.value)}
           onBlur={saveToDo} onKeyDown={handleKeyDown} ref={taskInput} className={cn({ [s.inputDone]: isDone })} />
-        <span className={cn(s.checkmark, { [s.done]: isDone } )} onClick={changeToDoStatus}>✓</span>
+        <span className={cn(s.checkmark, { [s.done]: isDone })} onClick={changeToDoStatus}>✓</span>
         <img src={trashIcon} alt="Delete todo icon" className={s.trashIcon} onClick={deleteToDo} />
       </div>
     )
