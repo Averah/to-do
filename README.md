@@ -1,16 +1,24 @@
 # <div align="center">ToDo List</div>
-![](readmeAssets/AppScreen.jpg)
+![](readmeAssets/todoList.jpg)
 
 ## Description
 
-This is unfinished social network for a week created with React + Typescript + Redux.  
- **Please note that server owner didn't provide any test user accounts for a complete experience of the app by the third parties. My private account was used. **
+This is basic todo list for a week created with React + Typescript.  
+ **Please note that fake API with json-server was used. In order to check the project functionality please use git clone, `npm ci` + script `npm run dev`.**
 ***
-Проект социальной сети, написанный на базе React + Typescript с использованием Redux.  
-**Пожалуйста, учтите, что владелец сервера не предоставил тестовый аккаунт для полноценной проверки работоспособности приложения сторонними лицами. Использовался личный аккаунт. **
+Базовый список задач на неделю, написанный на базе React + Typescript.  
+**В разработке использовался фейковый сервер, созданный с помощью json-server. Чтобы проверить функционал приложения, используйте git clone репозитория, `npm ci` и `npm run dev`.**
 
-![](readmeAssets/SocialNetworkFunc.gif)
+![](readmeAssets/toDoFunctions.gif)
 
+## How to use
 
-
-
+- Saving todos on enter / onBlur.
+- To mark/unmark as completed click on the checkmark on the right side of todo. 
+- To delete todo click on the trash icon on the right side of todo.
+- To switch the week click on the navigation arrows at the bottom of the todo cards.
+***
+- Чтобы сохранить задачу, нажать на enter/кликнуть левой кнопкой мыши в любой области приложения.
+- Чтобы пометить выполненной/невыполненной, нажать на галочку справа от задачи.
+- Чтобы удалить задачу, нажать на иконку мусора справа от задачи.
+- Чтобы перейти к следующей/предыдущей неделе, нажать на стрелки под карточками задач.
