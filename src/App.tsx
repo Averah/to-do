@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './App.css';
 import DateComponent from './components/DateComponent/DateComponent';
 import CardsList from './components/ToDos/CardsList/CardsList';
